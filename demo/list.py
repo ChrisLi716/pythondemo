@@ -34,7 +34,42 @@ list_temp.remove("apple")
 print(list_temp)
 del list_temp[0]
 print(list_temp)
-del list_temp
-print(list_temp)
-list2 = ['I']
+# del list_temp
+# print(list_temp)
+list2 = ['I', '4']
 print(list2)
+list2.clear()
+print(list2)
+
+list1 = ["apple", "banana", "cherry"]
+list2 = list1
+print(list2)
+list1[0] = "pear"
+print(list2)
+
+list2 = list1.copy()
+print(list2)
+list1.append("pipe apple")
+print(list1)
+print(list2)
+
+list3 = list1 + list2
+print(list3)
+
+list1.extend(list2)
+print(list1)
+
+x = list1.count("banana")
+print(x)
+# ASC
+list1.sort()
+print(list1)
+# DESC
+list1.sort(reverse=True)
+print(list1)
+
+list1.reverse()
+print(list1)
+
+idx = list1.index("banana")
+print(idx)
