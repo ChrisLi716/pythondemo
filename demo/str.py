@@ -49,3 +49,5 @@ print("" in d)
 
 striter = iter(d)
 print(next(striter))
+
+print(d.capitalize())

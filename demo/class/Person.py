@@ -15,13 +15,14 @@ class Person:
 class Student(Person):
     def __init__(self, name, gender, age, student_code):
         self.student_code = student_code
-        Person.__init__(self, name, gender, age)
+        # Person.__init__(self, name, gender, age)
         # super() 函数，它会使子类从其父继承所有方法和属性
-        # super().__init__(name, gender, age)
+        super().__init__(name, gender, age)
 
-    # 如果您在子类中添加一个与父类中的函数同名的方法，则将覆盖父方法的继承。
-    def descself(self):
-        return Person.descself(self) + "," + self.student_code
+
+# 如果您在子类中添加一个与父类中的函数同名的方法，则将覆盖父方法的继承。
+def descself(self):
+    return Person.descself(self) + "," + self.student_code
 
 
 p1 = Person("Chris", "Male", 32)
@@ -33,3 +34,4 @@ print(p1.descself())
 
 student = Student("Ethan", "Male", 3, "00123456")
 print(student.descself())
+print(student.name, student.gender, student.age, student.student_code)

@@ -1,3 +1,5 @@
+# --coding:utf-8--
+
 import os
 
 currentPath = os.getcwd()
@@ -5,38 +7,52 @@ print("currentPath", currentPath, sep=":")
 
 newDirPath = currentPath + os.sep + "tmp" + os.sep
 
-try:
+
+def create_dir_if_not_exist():
     if not os.path.exists(newDirPath):
         os.mkdir(newDirPath)
     else:
         print(newDirPath, "has existed!")
 
-    # create file and write content
-    filePath = newDirPath + "demo2.txt"
-    if not os.path.exists(filePath):
-        f = open(filePath, "x")
-    else:
-        f = open(filePath, "w")
-        print(filePath, "has existed!")
-    f.write("for testing purpose!")
 
-    # read file
-    f = open(filePath)
-    print(f.read())
-    f.close()
+def write2file(file_path: list, content):
+    for fpath in file_path:
+        try:
+            if not os.path.exists(fpath):
+                file = open(fpath, "x")
+            else:
+                file = open(fpath, "w")
+                print(fpath, "has existed!")
+                file.write(content)
+        finally:
+            file.close()
 
-    isDel = input("are your sure to delete file : " + filePath + "[Y / N]?")
-    if isDel == "Y" or isDel == "y":
-        if os.path.exists(filePath):
-            os.remove(filePath)
+
+def del_file(file_path):
+    is_del = input("are your sure to delete file : " + file_path + "[Y / N]?")
+    if is_del == "Y" or is_del == "y":
+        if os.path.exists(file_path):
+            os.remove(file_path)
         else:
             print("quit delete!")
     else:
-        print(filePath, "doesn't exist!")
+        print(file_path, "doesn't exist!")
 
 
-    if not os.path.exists(newDirPath):
-        os.path.
+def read_file():
+    f = open(demo1)
+    print(f.read())
 
-finally:
-    f.close()
+
+create_dir_if_not_exist()
+
+# create file and write content
+demo1 = newDirPath + "demo1.txt"
+demo2 = newDirPath + "demo2.txt"
+demo3 = newDirPath + "demo3.txt"
+write2file([demo1, demo2, demo3], "for testing purpose!")
+
+# read file
+read_file()
+
+# del_file()

@@ -32,8 +32,8 @@ list_temp.pop(2)
 print(list_temp)
 list_temp.append("apple")
 print(list_temp)
-list_temp.remove("apple")
 # 仅删除首次出现的指定值
+list_temp.remove("apple")
 print("remove apple", list_temp)
 del list_temp[0]
 print(list_temp)
@@ -60,7 +60,8 @@ list3 = list1 + list2
 print(list3)
 
 list1.extend(list2)
-print(list1)
+print("merge list", list1)
+print("merge list", list1 + list2)
 
 x = list1.count("banana")
 print(x)
