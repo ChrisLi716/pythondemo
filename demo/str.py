@@ -46,3 +46,6 @@ print(d.split(","))
 
 # 如需检查字符串中是否存在特定短语或字符，我们可以使用 in 或 not in 关键字
 print("" in d)
+
+striter = iter(d)
+print(next(striter))

@@ -30,8 +30,11 @@ list_temp.pop()
 print(list_temp)
 list_temp.pop(2)
 print(list_temp)
-list_temp.remove("apple")
+list_temp.append("apple")
 print(list_temp)
+list_temp.remove("apple")
+# 仅删除首次出现的指定值
+print("remove apple", list_temp)
 del list_temp[0]
 print(list_temp)
 # del list_temp

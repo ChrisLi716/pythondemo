@@ -27,3 +27,8 @@ print(n)
 v1 = "hello"
 v2 = "python"
 print(v1 + " " + v2)
+
+s = "Hello world!"
+print(repr(s))
+d = 1000.77
+print(repr(d))

@@ -17,7 +17,7 @@ set1.update(set2)
 print(set1)
 
 set1.remove("banana")
-print(set1)
+print("remove banana", set1)
 
 # 如果要删除的项目不存在，则 remove() 将引发错误
 # set1.remove("www")
