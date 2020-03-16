@@ -30,7 +30,7 @@ print(dict1)
 
 # pop() 方法删除具有指定键名的项
 v = dict1.pop("brand")
-print(v)
+print("pop the specified key", v)
 print(dict1)
 
 # 方法删除最后插入的项目（在 3.7 之前的版本中，删除随机项目）

@@ -19,6 +19,7 @@ def write2file(file_path: list, content):
     for fpath in file_path:
         try:
             if not os.path.exists(fpath):
+                # "x" - 创建 - 将创建一个文件，如果文件存在则返回错误
                 file = open(fpath, "x")
             else:
                 file = open(fpath, "w")

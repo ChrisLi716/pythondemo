@@ -15,7 +15,7 @@ def write2file(file: str):
     try:
         f = open(file)
         f.write("Lorum Ipsum")
-    except:
+    except UnboundLocalError:
         print("Something went wrong when writing to the file")
     finally:
         f.close()
