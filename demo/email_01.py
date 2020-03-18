@@ -1,26 +1,110 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
 import smtplib
 from email.mime.text import MIMEText
-from email.header import Header
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+import traceback
+import os
 
-sender = 'allsale@site.com'
-receivers = ['lilunlogic@163.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
-# 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
-message = MIMEText('Python 邮件发送测试...', 'plain', 'utf-8')
-message['From'] = Header("菜鸟教程", 'utf-8')  # 发送者
-message['To'] = Header("测试", 'utf-8')  # 接收者
+# https://blog.csdn.net/qq_20417499/article/details/80566265
 
-subject = 'Python SMTP 邮件测试'
-message['Subject'] = Header(subject, 'utf-8')
+def build_content(sender, receiver, subject, body):
+    # 设置邮件正文，这里是支持HTML的
+    # 设置正文为符合邮件格式的HTML内容
+    m = MIMEText(body, 'html')
+    # 设置邮件标题
+    m['subject'] = subject
+    # 设置发送人
+    m['from'] = sender
+    # 设置接收人
+    m['to'] = receiver
+    return m
 
-try:
-    smtpObj = smtplib.SMTP("smpt.163.com", 25)
-    # smtpObj = smtplib.SMTP_SSL()
-    smtpObj.sendmail(sender, receivers, message.as_string())
-    print("邮件发送成功")
 
-except smtplib.SMTPException:
-    print("Error: 无法发送邮件")
+def build_attach_file(sender, receiver, subject, body, files_tuple):
+    m = MIMEMultipart()
+
+    # for file in files_tuple:
+    #     file_name = os.path.basename(file)
+    #     print(file)
+    #     print(file_name)
+    #     file_apart = MIMEApplication(open(file, "rb").read())
+    #     file_apart.add_header('Content-Disposition', 'attachment', filename=file_name)
+    #     m.attach(file_apart)
+
+    file = 'demo1.txt'
+    file_apart = MIMEApplication(open("D:/Python/python_workspace/pythondemo/demo/tmp/demo1.txt", 'rb').read())
+    file_apart.add_header('Content-Disposition', 'attachment', filename=file)
+
+    text_apart = MIMEText(body)
+    m.attach(text_apart)
+    m.attach(file_apart)
+    m['Subject'] = 'title'
+    m['from'] = 'lilunlogic@163.com'
+    m['to'] = '872343840@qq.com'
+
+    return m
+
+
+def test_attach_email():
+    file = 'demo1.txt'
+    file_apart = MIMEApplication(open("D:/Python/python_workspace/pythondemo/demo/tmp/demo1.txt", 'rb').read())
+    file_apart.add_header('Content-Disposition', 'attachment', filename=file)
+
+    content = "<h1>You've already sent eamil successfully!</h1>" \
+              "<p>Chris</p>"
+    text_apart = MIMEText(content)
+
+    m = MIMEMultipart()
+    m.attach(text_apart)
+    m.attach(file_apart)
+    m['subject'] = 'title'
+    m['from'] = 'lilunlogic@163.com'
+    m['to'] = '872343840@qq.com'
+
+    return m
+
+
+def sent_email(receiver, subject, body, file_tuple):
+    # 设置发件服务器地址
+    host = 'smtp.163.com'
+    # 设置发件服务器端口号。注意，这里有SSL和非SSL两种形式，现在一般是SSL方式
+    non_ssl_port = 25
+    # ssl_port = 465
+
+    # 设置发件邮箱，一定要自己注册的邮箱
+    sender = 'lilunlogic@163.com'
+    # 设置发件邮箱的授权码密码，根据163邮箱提示，登录第三方邮件客户端需要授权码
+    pwd = 'Lilun32768+'
+
+    # m = build_content(sender, receiver, subject, body)
+    # m = build_attach_file(sender, receiver, subject, body, file_tuple)
+    m = test_attach_email()
+    try:
+        s = smtplib.SMTP(host, non_ssl_port)
+        # 注意！如果是使用SSL端口，这里就要改为SMTP_SSL
+        # s = smtplib.SMTP_SSL(host, ssl_port)
+        # 登陆邮箱
+        s.login(sender, pwd)
+        s.sendmail(sender, receiver, m.as_string())
+        # 发送邮件！
+        print('Done.sent email success')
+        s.quit()
+    except smtplib.SMTPException:
+        print('Error.sent email fail', traceback.print_exc())
+
+
+if __name__ == '__main__':
+
+    # 设置邮件接收人，可以是QQ邮箱
+    receiver = '872343840@qq.com'
+
+    subject = "send email with attachments"
+    body = "<h1>You've already sent eamil successfully!</h1>" \
+           "<p>Chris</p>"
+
+    full_file_name = []
+    dir_path = os.getcwd() + os.sep + "tmp"
+    for file in os.listdir(dir_path):
+        full_file_name.append(os.path.join(dir_path, file))
+    sent_email(receiver, subject, body, tuple(full_file_name))

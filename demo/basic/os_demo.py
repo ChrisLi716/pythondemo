@@ -12,14 +12,16 @@ print(os.curdir)
 print(os.pardir)
 
 # os.walk 函数可以得到一个三元tupple(dirpath, dirnames, filenames).
-for root, dirs, files in os.walk(os.getcwd() + os.sep + "tmp"):
+for root, dirs, files in os.walk(os.pardir + os.sep + "tmp"):
     print(root)  # 当前目录路径
     print(dirs)  # 当前路径下所有子目录
     print(files)  # 当前路径下所有非目录子文件
 
 full_name_list = []
-for root, dirs, files in os.walk(os.getcwd() + os.sep + "tmp"):
+
+for root, dirs, files in os.walk(os.pardir + os.sep + "tmp"):
     for file in files:
+        print("basename: ", os.path.basename(file))
         tuple_file = os.path.splitext(file)
         print(tuple_file[0], tuple_file[1], sep="")
         full_name_list.append(os.path.join(root, file))
