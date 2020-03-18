@@ -31,4 +31,3 @@ if a > b or a > c:
 
 if a > b:
     pass
-
