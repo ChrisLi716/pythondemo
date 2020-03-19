@@ -12,15 +12,16 @@ CONTENT = """
 def parse_with_lxml():
     root = etree.fromstring(CONTENT)
     for log in root.xpath("//log"):
-        print
-        log.text
+        print(log.text)
 
 
 def parse_with_stdlib():
     root = ElementTree.fromstring(CONTENT)
     for log in root.iter('log'):
-        print
-        log.text
+        print(log.text)
+
+def parse_file():
+    root = etree.parse()
 
 
 if __name__ == '__main__':
