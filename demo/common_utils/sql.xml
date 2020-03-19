@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is list of customers -->
+<sql_list>
+    <sql name="select_user">
+        <![CDATA [
+
+        ] ] >
+    </sql>
+
+</sql_list>

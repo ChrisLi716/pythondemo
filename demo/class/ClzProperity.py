@@ -17,6 +17,12 @@ class Clz:
         print(cls.name, cls.clz_date)
         print(Clz.name, Clz.clz_date)
 
+        print(cls.__name__)
+        print(cls.__doc__)
+        print(cls.__module__)
+        print(cls.__bases__)
+        print(cls.__dict__)
+
 
 c = Clz("Chris", "2020-03-20")
 c.desc_clz_instance()
