@@ -1,4 +1,4 @@
-from  import etree
+from lxml import etree
 import xml.etree.ElementTree as ElementTree
 
 CONTENT = """
