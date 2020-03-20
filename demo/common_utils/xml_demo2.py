@@ -20,10 +20,16 @@ def parse_with_stdlib():
     for log in root.iter('log'):
         print(log.text)
 
+
 def parse_file():
-    root = etree.parse()
+    xml = etree.parse("./movies.xml", etree.XMLParser())
+    result = etree.tostring(xml)
+    # result=etree.tostringlist(html) #解析成列表
+    root = xml.xpath("/")
+
 
 
 if __name__ == '__main__':
-    parse_with_lxml()
-    parse_with_stdlib()
+    # parse_with_lxml()
+    # parse_with_stdlib()
+    parse_file()
