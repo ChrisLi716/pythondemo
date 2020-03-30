@@ -22,11 +22,14 @@ def parse_with_stdlib():
 
 
 def parse_file():
-    xml = etree.parse("./movies.xml", etree.XMLParser())
-    result = etree.tostring(xml)
+    element_tree = etree.parse("./movies.xml", etree.XMLParser())
+    result = etree.tostring(element_tree)
     # result=etree.tostringlist(html) #解析成列表
-    root = xml.xpath("/")
-
+    ele_movies = element_tree.xpath("//movie")
+    for i in ele_movies:
+        attr = i.xpath("./@title")
+        v_type = i.xpath("./type/text()")
+        print(attr, v_type)
 
 
 if __name__ == '__main__':

@@ -1,10 +1,12 @@
 class Clz:
     name = "clz"
     clz_date = "2020-03-15"
+    __age = None
 
     def __init__(self, name, date):
         self.name = name
         self.clz_date = date
+        self.__age = 12
 
     def desc_clz_instance(self):
         print(self.name, self.clz_date)
@@ -16,14 +18,18 @@ class Clz:
     def desc_clz(cls):
         print(cls.name, cls.clz_date)
         print(Clz.name, Clz.clz_date)
+        if cls.__age is None:
+            print("__age is None")
+            Clz("Chris", "2020-03-20")
+            print(Clz.__class__.__age)
 
-        print(cls.__name__)
-        print(cls.__doc__)
-        print(cls.__module__)
-        print(cls.__bases__)
-        print(cls.__dict__)
+        # print(cls.__name__)
+        # print(cls.__doc__)
+        # print(cls.__module__)
+        # print(cls.__bases__)
+        # print(cls.__dict__)
 
 
 c = Clz("Chris", "2020-03-20")
-c.desc_clz_instance()
+# c.desc_clz_instance()
 c.desc_clz()

@@ -35,8 +35,9 @@ print(c.strip())
 # lower() 返回小写的字符串：
 print(c.lower().strip())
 # upper() 方法返回大写的字符串：
-d = "hello chris christoph"
+d = "hello CHRIS christoph"
 print(d.upper())
+print("location", d.index("chris"))
 
 # replace() 用另一段字符串来替换字符串：
 print(d.replace("chr", "hedy"))
@@ -51,3 +52,6 @@ striter = iter(d)
 print(next(striter))
 
 print(d.capitalize())
+
+v_str = "hello \n world!"
+print(v_str)

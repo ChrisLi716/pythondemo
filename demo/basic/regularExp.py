@@ -10,7 +10,7 @@ print(x)
 
 # search() 函数搜索字符串中的匹配项，如果存在匹配则返回 Match 对象, 如果未找到匹配，则返回值None
 x = re.search("a", str_temp)
-print("The first white-space character is located in position:", x.start())
+print("The first a character is located in position:", x.start(), x.end())
 print(x.span())  # 返回的元组包含了匹配的开始和结束位置
 print(x.string)  # 返回传入函数的字符串
 print(x.group())  # 返回匹配的字符串部分
