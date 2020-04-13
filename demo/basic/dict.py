@@ -73,9 +73,9 @@ myfamily = {
 }
 
 for x in myfamily.values():
-    for m, n in x.items():
-        print(m, n)
+    for name, year in x.items():
+        print(name, year)
 
 for x, y in myfamily.items():
-    for m, n in y.items():
-        print(x, m, n)
+    for name, year in y.items():
+        print(x, name, year)
