@@ -77,3 +77,4 @@ print(list1)
 
 idx = list1.index("banana")
 print(idx)
+
