@@ -27,3 +27,7 @@ for i in x:
 # sub() 函数把匹配替换为您选择的文本, count 参数来控制替换次数
 x = re.sub("\\s", "|", str_temp, 2)
 print(x)
+
+s = "'my name'"
+sub = re.sub("'", "", s)
+print("sub", sub)
