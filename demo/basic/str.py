@@ -35,9 +35,8 @@ print(c.strip())
 # lower() 返回小写的字符串：
 print(c.lower().strip())
 # upper() 方法返回大写的字符串：
-d = "hello CHRIS christoph"
+d = "hello chris christoph"
 print(d.upper())
-print("location", d.index("chris"))
 
 # replace() 用另一段字符串来替换字符串：
 print(d.replace("chr", "hedy"))
@@ -55,3 +54,24 @@ print(d.capitalize())
 
 v_str = "hello \n world!"
 print(v_str)
+
+tmp = " t.user_name as user"
+inx = tmp.index("as") + 3
+print(inx)
+print(tmp[inx:len(tmp)])
+
+
+def demo():
+    if "as" in tmp:
+        as_index = tmp.index("as") + 3
+        header = tmp[as_index: len(tmp)]
+    elif "." in tmp:
+        dot_index = tmp.index(".") + 1
+        header = tmp[dot_index:len(tmp)]
+    else:
+        header = tmp
+    print("header", header)
+
+
+if __name__ == '__main__':
+    demo()

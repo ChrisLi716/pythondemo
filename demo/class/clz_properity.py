@@ -1,3 +1,6 @@
+"""desc the class proprieties"""
+
+
 class Clz:
     name = "clz"
     clz_date = "2020-03-15"
@@ -23,13 +26,16 @@ class Clz:
             Clz("Chris", "2020-03-20")
             print(Clz.__class__.__age)
 
-        # print(cls.__name__)
-        # print(cls.__doc__)
-        # print(cls.__module__)
-        # print(cls.__bases__)
-        # print(cls.__dict__)
+    @classmethod
+    def desc_clz_proprieties(cls):
+        print("__name__:", cls.__name__)
+        print("__doc__:", cls.__doc__)
+        print("__module__:", cls.__module__)
+        print("__bases__:", cls.__bases__)
+        print("__dict__:", cls.__dict__)
 
 
 c = Clz("Chris", "2020-03-20")
 # c.desc_clz_instance()
-c.desc_clz()
+# c.desc_clz()
+c.desc_clz_proprieties()

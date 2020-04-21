@@ -1,3 +1,4 @@
+# 列表推导（list comprehension）
 def listcomp():
     symbols = '$¢£¥€¤'
     codes = [ord(symbol) for symbol in symbols if ord(symbol) > 127]

@@ -21,12 +21,12 @@ class MyThread(threading.Thread):
         thread_lock.release()
 
 
-def print_time(threadName, delay, counter):
+def print_time(thread_name, delay, counter):
     while counter:
         if exitFlag:
-            threadName.exit()
+            thread_name.exit()
         time.sleep(delay)
-        print("%s: %s" % (threadName, time.ctime(time.time())))
+        print("%s: %s" % (thread_name, time.ctime(time.time())))
         counter -= 1
 
 
